@@ -1,0 +1,13 @@
+CARPETA DE AUDIO
+================
+
+La app NO necesita archivos de audio: la música ambiente y los efectos se
+generan en vivo con la Web Audio API (sin archivos, sin riesgo de derechos).
+
+Si querés usar una pista de música propia (con derechos de uso):
+1. Colocá aquí tu archivo, por ejemplo: ambiente.mp3
+2. Abrí js/config.js y en la sección "audio" escribí:
+      pistaMusica: "assets/audio/ambiente.mp3"
+3. Esa pista reemplazará al ambiente sintetizado.
+
+El botón de audio (arriba a la derecha) permite activar o silenciar el sonido.

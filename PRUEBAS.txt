@@ -1,0 +1,86 @@
+# PRUEBAS — ARCOR HALLOWEEN CHALLENGE
+
+Resultados de las pruebas realizadas y lista de verificación para el responsable
+del servidor / del tótem.
+
+## Cómo se probó
+
+Las pruebas automáticas se corrieron renderizando la app en un navegador basado
+en **Chromium** (motor del Chrome de Android), en una ventana vertical de
+480×854, recorriendo las pantallas y jugando cada juego de punta a punta.
+
+Leyenda: ✅ verificado · 🟡 pendiente de probar en un tótem Android real
+
+---
+
+## Pruebas obligatorias (según el pedido)
+
+| # | Prueba | Resultado |
+|---|--------|-----------|
+| 1 | La pantalla inicial se muestra correctamente | ✅ |
+| 2 | Los tres juegos pueden abrirse | ✅ |
+| 3 | Cada juego funciona con controles táctiles (clic/tap) | ✅ |
+| 4 | Las puntuaciones son correctas (suma acierto, no suma error; penalizadores restan; nunca baja de 0) | ✅ |
+| 5 | Las partidas pueden reiniciarse (JUGAR OTRA VEZ) | ✅ |
+| 6 | Se puede volver al menú desde cualquier juego y resultado | ✅ |
+| 7 | Los temporizadores se detienen al terminar una partida | ✅ |
+| 8 | No se acumulan sonidos ni animaciones de partidas anteriores (se limpian al cambiar de pantalla) | ✅ |
+| 9 | Las imágenes se adaptan a la pantalla vertical | ✅ |
+| 10 | No hay botones fuera de pantalla | ✅ |
+| 11 | La app funciona sin conexión con APIs externas | ✅ (no hay llamadas externas) |
+| 12 | No hay errores críticos en la consola del navegador | ✅ (0 errores) |
+| 13 | Los recursos están correctamente vinculados (imágenes, fuentes, scripts) | ✅ |
+| 14 | Las instrucciones de publicación coinciden con la arquitectura (sitio estático) | ✅ |
+
+---
+
+## Pruebas por juego
+
+### Preguntados Arcor
+- ✅ Muestra pregunta, categoría y 4 opciones.
+- ✅ Al responder: marca correcta en verde, incorrecta en rojo, muestra explicación.
+- ✅ No permite responder dos veces la misma pregunta (opciones se desactivan).
+- ✅ Avanza automáticamente y actualiza el puntaje y la barra de progreso.
+- ✅ Preguntas y opciones se mezclan en cada partida.
+- ✅ Al terminar las 10 preguntas muestra puntaje, aciertos y mensaje final.
+- ✅ Botones JUGAR OTRA VEZ y VOLVER AL MENÚ funcionan.
+
+### Memotest Arcor
+- ✅ Tres dificultades: Fácil (4 pares), Medio (6), Difícil (8). Fácil por defecto.
+- ✅ Las tarjetas se voltean al tocarlas (animación 3D).
+- ✅ Los pares que coinciden quedan descubiertos; los que no, se ocultan tras una pausa.
+- ✅ No se puede tocar una tarjeta ya descubierta ni tocar durante la animación (tablero bloqueado).
+- ✅ Cuenta movimientos y tiempo.
+- ✅ Al completar todos los pares muestra la pantalla de resultados.
+
+### Atrapa las Golosinas
+- ✅ Partida de 30 segundos con contador y puntaje siempre visibles.
+- ✅ Las golosinas suman; los elementos de Halloween restan (penalización).
+- ✅ El puntaje nunca baja de 0.
+- ✅ Cada elemento se contabiliza una sola vez.
+- ✅ Los elementos aparecen dentro del área de juego.
+- ✅ La velocidad de aparición aumenta de forma progresiva y moderada.
+- ✅ Al terminar el tiempo se detienen los elementos y aparece el resultado.
+
+---
+
+## Navegación, estabilidad y táctil
+- ✅ No hay scroll de página (`scrollY` se mantiene en 0 tras interactuar).
+- ✅ Sin selección de texto ni menús del navegador al tocar.
+- ✅ Vuelve al menú/bienvenida por inactividad (20 s en resultados, 60 s en menú) sin interrumpir partidas en curso.
+- ✅ El audio no se reproduce hasta el primer toque; botón de silencio funciona; el juego sigue sin audio.
+- ✅ Cambiar de pantalla limpia temporizadores, sonidos y animaciones previas.
+
+---
+
+## Pendiente de probar en dispositivo Android real (🟡)
+
+Estas pruebas no pueden completarse sin el tótem físico y se recomienda hacerlas
+antes del evento:
+
+- 🟡 Verificar el **tamaño real de los botones** y la legibilidad a corta distancia en la pantalla del tótem.
+- 🟡 Confirmar la **reproducción de audio** en el navegador del tótem (volumen y mezcla).
+- 🟡 Probar el comportamiento con **muchos toques rápidos y simultáneos** (multitouch) durante Atrapa las Golosinas.
+- 🟡 Validar el **modo pantalla completa / quiosco** elegido para el dispositivo (ver README, sección 5).
+- 🟡 Confirmar el comportamiento ante **giros de pantalla** si el tótem permitiera rotación (se recomienda fijarlo en vertical).
+- 🟡 Verificar el rendimiento durante una **sesión larga** (varias horas) sin recargar.
